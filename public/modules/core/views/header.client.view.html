@@ -15,7 +15,7 @@
     
         <div class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
             <ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
-
+                <li><a href="#!/users" class="text-color"><b>Contenders</b></a></li>
                 <!--bet notification-->
                 <li class="btn-group" dropdown is-open="status.isopen" ng-controller="BetsController">
                     <button type="button" class="btn btn-info input-sm" ng-if="betNotifications.length==0">

@@ -77,8 +77,16 @@
 
 
 .text-color{
-	color:#fff !important;
+	color:#ddd !important;
 }
+
+
+
+.text-color:hover{
+    color:#fff !important;
+}
+
+
 
 .text-color-theme{
 	color:#a72f33 !important;
@@ -108,5 +116,5 @@ li{
 .text-style{
 	font-family: sans-serif;	
 	font-style: italic;
-	text-shadow: 2px 2px #000;
+	text-shadow: 1px 1px #000;
 }

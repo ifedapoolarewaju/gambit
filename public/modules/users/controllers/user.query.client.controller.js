@@ -17,9 +17,17 @@ angular.module('users').controller('UserQueryController', ['$scope', '$statePara
         $scope.submitSearch = function() {
             var search = $scope.search;
             $scope.search = "";
-            $location.path("users").search({
+            if($location.path() === "/users"){
+                $location.search({
                 query: search
-            });
+                });
+                $scope.find();
+            }
+            else{
+                $location.path("users").search({
+                query: search
+                });    
+            }
         };
 
 
