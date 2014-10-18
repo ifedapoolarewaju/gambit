@@ -1,0 +1,19 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">Bet Challenge</h3>
+    </div>
+    <div class="modal-body">
+        <ul>
+            <li>
+                <b>{{notification.challenger.displayName}}</b> Challenged You to a 
+                Dice Game.
+
+                with a stake of {{notification.stake}} points.
+            </li>
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-controller="ModalDemoCtrl" ng-click="cancel();open('lg', 'modules/bets/views/bet-game.client.view.html', 'BetGameController', notification)">Accept</button>
+        <button class="btn btn-warning" ng-click="cancel()">Decline</button>
+    </div>
+</div>

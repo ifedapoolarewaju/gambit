@@ -1,0 +1,64 @@
+<!--user controller needed to search users -->
+<section data-ng-controller="UserQueryController as userQueryCtrl" ng-init="find()">
+
+
+<!--bets cobtroller needed to place a bet -->
+    <section data-ng-controller="BetsController as betsCtrl">
+        <hr>
+
+        <div class="page-header">
+            <h1 class="text-color">Contenders</h1>
+        </div>
+        <div class="list-group">
+
+        	<!--list of users-->
+            <a data-ng-repeat="user in users" class="list-group-item bgcolor-matt">
+                <small class="list-group-item-text">
+                    <span class="badge bgcolor"><span class="glyphicon glyphicon-user"></span> {{user.displayName}}</span>
+                    <p>
+                        <img src="img/Coins-icon.PNG" width="50px">&nbsp; <b>{{user.points}} pts</b>
+                    </p>
+                    <p>rank: <span class="text-color-theme">{{user.rank}}</span></p>
+                    <span data-ng-bind="user.created | date:'mediumDate'"></span>
+                    by
+                    <span data-ng-bind="user.displayName"></span>
+                </small>
+                <h4 class="list-group-item-heading" data-ng-bind="user.title"></h4>
+                <p class="list-group-item-text" data-ng-bind="user.content"></p>
+                <div>
+                    <button type="button" class="btn btn-danger input-sm" ng-click="betsCtrl.fillForm(user)">Challenge</button>
+                </div>
+            </a>
+        </div>
+        <div class="alert alert-warning text-center" data-ng-if="users.$resolved && !users.length">
+            No users online yet, At least two users are needed to place a bet.
+        </div>
+
+<!--bet creation form-->
+        <div ng-show="betsCtrl.formState" class="form-class">
+            <form class="form-inline form-wrap bgcolor-matt" role="form" ng-submit="betsCtrl.create()">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon bgcolor">@</div>
+                        <div class="form-control bgcolor">Challengee: <b>{{betsCtrl.challengee.displayName}}</b></div>
+                        <input class="form-control" type="text" placeholder="Title" data-ng-model="betsCtrl.title">
+                        <input class="form-control" type="text" placeholder="Stake" data-ng-model="betsCtrl.stake">
+                        <div class="text-center bgcolor">
+	                    	<button type="submit" class="btn btn-default input-sm"><b>Put Up Challenge</b></button>
+	                    	<button type="button" class="btn btn-default input-sm" ng-click="betsCtrl.formState=false"><b>cancel</b></button>
+                		</div>
+                    </div>
+                </div>
+
+                
+            </form>
+        </div>
+
+
+<!--feedback for bet creation-->
+        <div class="feedback text-center" ng-show="betsCtrl.showAlert">
+            <b>{{betsCtrl.message}}</b>
+        </div>
+
+    </section>
+</section>

@@ -1,0 +1,121 @@
+@media (min-width: 992px) {
+	.nav-users {
+		position: fixed;
+	}
+}
+
+.remove-account-container {
+	display: inline-block;
+	position: relative;
+}
+
+.btn-remove-account {
+	top: 10px;
+	right: 10px;
+	position: absolute;
+}
+
+
+@-webkit-keyframes fadeOut {
+    from {opacity:1;}
+
+    to {opacity:0;}
+}
+
+@-webkit-keyframes fadeIn {
+    from {opacity:0;}
+
+    to {opacity:1;}
+}
+
+@-webkit-keyframes slideUp {
+    from {bottom:-50px;}
+
+    to {bottom: 10px;}
+}
+
+
+@-webkit-keyframes slideDown {
+    from {bottom: 10px;}
+
+    to {bottom: -50px;}
+}
+
+
+
+
+@-webkit-keyframes bounceIn {
+  0%, 20%, 40%, 60%, 80%, 100% {
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+}
+
+.feedback{
+	display: block;
+	width: 150px;
+	border-radius: 15px;
+	height: 50px;
+	background-color: #fff;
+	position: fixed;
+	margin: 0 auto;
+	bottom: 10px;
+}
+
+.feedback.ng-show-add{
+	-webkit-animation: slideUp 0.5s linear !important; /* Chrome, Safari, Opera */
+}
+
+.feedback.ng-hide-remove{
+	-webkit-animation: slideUp 0.5s linear !important; /* Chrome, Safari, Opera */
+}
+
+
+
+
+.feedback.ng-hide-add{
+	-webkit-animation: slideDown 0.4s linear !important; /* Chrome, Safari, Opera */
+}
+
+.feedback.ng-show-remove{
+	-webkit-animation: slideDown 0.4s linear !important; /* Chrome, Safari, Opera */
+}
+
+
+
+
+.fixed-form{
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+}
+
+.form-wrap{
+	display: block !important;
+}
+
+.form-class{
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+}
+
+.form-class.ng-show-add{
+	-webkit-animation: slideUp 0.3s linear !important; /* Chrome, Safari, Opera */
+}
+
+.form-class.ng-hide-remove{
+	-webkit-animation: slideUp 0.3s linear !important; /* Chrome, Safari, Opera */
+}
+
+
+
+.form-class.ng-hide-add{
+	-webkit-animation: slideDown 0.4s linear !important; /* Chrome, Safari, Opera */
+}
+
+
+body{
+	/*color:#fff;*/
+	background: url("../../../img/pattern.PNG")
+}

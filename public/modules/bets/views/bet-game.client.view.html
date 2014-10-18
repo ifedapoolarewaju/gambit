@@ -1,0 +1,35 @@
+<div class="modal-header bgcolor">
+    <h4 class="modal-title"><span class="logo-style-matt">Gambit Dice Game</span></h4>
+</div>
+<div class="modal-body text-center bgcolor-matt">
+    {{timer}}
+	<div id="waiting-pane" ng-show="showCountdown">
+		<h1 data-ng-bind="countdownNum"></h1>
+
+		<button type="submit" class="btn btn-warning">Cancel Decision</button>
+	</div>
+
+	<div ng-show="showGameEnv">
+		<h5 class="text-center logo-style">Rolling Stone</h5>
+		<div ng-show="showNumberGenerationIllusion">
+			<img src="img/animated-dice-image-0019.gif">
+
+			<h1>{{illusiveNumber}}</h1>
+			<p><span class="badge">Timer: {{postGenerationTime}}</span></p>
+		</div>
+		<div ng-show="showDiceNumber">
+			<h1>{{diceNumber}}</h1>
+		</div>
+
+		<div ng-show="showWinner" class="winner-pane">
+			{{winnerMsg}}
+		</div>
+
+		<button type="submit" class="btn btn-danger" ng-click="generateDiceNumber()">Roll Dice</button>
+ 		<button type="submit" class="btn btn-success" ng-click="tweaked=true">Tweak Dice Roll</button>
+	</div>
+</div>
+<div class="modal-footer bgcolor">
+    
+</div>
+ 

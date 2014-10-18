@@ -1,0 +1,112 @@
+<section data-ng-controller="HeaderController" class="navbar-fixed-top">
+<nav class="navbar navbar-inverse header text-color" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a href="/#!/" class="navbar-brand logo-style">GAMBIT</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    
+        <div class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
+            <ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
+
+                <!--bet notification-->
+                <li class="btn-group" dropdown is-open="status.isopen" ng-controller="BetsController">
+                    <button type="button" class="btn btn-info input-sm" ng-if="betNotifications.length==0">
+                        {{betNotifications.length}}
+                    </button>
+
+                    <button type="button" class="btn btn-success dropdown-toggle input-sm" ng-if="betNotifications.length > 0">
+                        {{betNotifications.length}}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li ng-repeat="notification in betNotifications">
+                            <a ng-controller="ModalDemoCtrl" ng-click="betNotifications.splice($index, 1);open('lg', 'modules/users/views/bet-notification.client.view.html', 'ModalInstanceCtrl', notification)">{{notification.challenger.displayName}} Challenged you
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!--end bet notification-->
+                <li>
+                    <!--custom addition-->
+                    <form class="form-inline right" role="form" data-ng-controller="UserQueryController" data-ng-submit="submitSearch()">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input class="form-control input-sm" type="search" placeholder="Search User" ng-model="search">
+                            </div>
+                        </div>
+                    </form>
+                    <!--custom addition end-->
+                </li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
+
+                <li ui-route="/signup" ng-class="{active: $uiRoute}">
+                    <a href="/#!/signup">Sign Up</a>
+                </li>
+                <li ui-route="/signin" ng-class="{active: $uiRoute}">
+                    <a href="/#!/signin">Sign In</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
+                <!--bet accepted notification-->
+                <li class="btn-group" dropdown is-open="status.isopen" ng-controller="BetsController">
+                    <button type="button" class="btn btn-info input-sm" ng-if="acceptedBets.length==0">
+                        {{acceptedBets.length}}
+                    </button>
+
+                    <button type="button" class="btn btn-success dropdown-toggle input-sm" ng-if="acceptedBets.length > 0">
+                        {{acceptedBets.length}}
+                        <span class="caret"></span>
+                    </button>
+
+                    <ul class="dropdown-menu" role="menu">
+                        <li ng-repeat="notification in acceptedBets">
+                            <a ng-controller="ModalDemoCtrl" ng-click="open('lg', 'modules/users/views/bet-notification.client.view.html', 'ModalInstanceCtrl', notification)">{{notification.challengee.displayName}} Accepted your Challenge
+                        <button class="btn btn-primary" ng-controller="ModalDemoCtrl" ng-click="acceptedBets.splice($index, 1);open('lg', 'modules/bets/views/bet-game.client.view.html', 'BetGameController', notification)">Play Now</button>
+                        <button class="btn btn-warning" ng-click="cancel()">Decline</button>
+                    </a>
+                        </li>
+                    </ul>
+                </li>
+                <!--end bet accepted notification-->
+                <li>
+                	<img src="img/Coins-icon.PNG" width="40px">&nbsp;<b>{{authentication.user.points}} pts</b>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span data-ng-bind="authentication.user.displayName" class="text-color"></span> <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/#!/settings/profile">Edit Profile</a>
+                        </li>
+                        <li>
+                            <a href="/#!/settings/accounts">Manage Social Accounts</a>
+                        </li>
+                        <li data-ng-show="authentication.user.provider === 'local'">
+                            <a href="/#!/settings/password">Change Password</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="/auth/signout">Signout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+    <div class="header-extension">
+        <img src="img/logo.PNG">
+    </div>
+</section>

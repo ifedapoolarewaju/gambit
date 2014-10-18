@@ -1,0 +1,20 @@
+@-webkit-keyframes zoomIn {
+    from {font-size: 0em;}
+
+    to {font-size: 3em; font-weight: bolder;}
+}
+
+
+.winner-pane{
+	font-size: 3em;
+	font-weight: bolder;
+}
+
+
+.winner-pane.ng-show-add{
+	-webkit-animation: zoomIn 0.2s linear !important; /* Chrome, Safari, Opera */
+}
+
+.winner-pane.ng-hide-remove{
+	-webkit-animation: zoomIn 0.2s linear !important; /* Chrome, Safari, Opera */
+}
